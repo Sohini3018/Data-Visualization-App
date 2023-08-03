@@ -22,7 +22,8 @@ def main():
             # Save the uploaded file in the temporary directory
             with open(filepath, 'wb') as f:
                 f.write(uploaded_file.getvalue())
-
+                
+             # Connect to CSV,JSON,XLSX database using the custom connection
             conn = st.experimental_connection(
                 'custom_connection', type=CustomConnection, filepath=filepath, data_format=data_format)
             df = conn._connect(filepath=filepath, data_format=data_format)
